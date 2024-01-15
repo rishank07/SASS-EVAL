@@ -1,0 +1,25 @@
+@mixin rectangle($width) {
+    width: $width;
+    height: $width/2;
+}
+
+@mixin circle($width) {
+    width: $width;
+    height: $width;
+    border-radius: 50%;
+}
+
+.item {
+    background-color: lightblue;
+    
+    @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+            @if $i % 2 == 0 {
+                @include rectangle($i*100px);
+            } 
+            @else {
+                @include circle($i*100px);
+            }
+        }
+    }
+}
